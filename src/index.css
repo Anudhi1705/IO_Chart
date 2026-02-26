@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 40 10% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 40 10% 92%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 40 10% 92%;
+
+    --primary: 38 92% 55%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 40 10% 85%;
+
+    --muted: 220 15% 14%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 174 55% 45%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 40 10% 92%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 38 92% 55%;
+
+    --radius: 0.5rem;
+
+    /* Chart-specific tokens */
+    --chart-1: 38 92% 55%;
+    --chart-2: 174 55% 45%;
+    --chart-3: 350 65% 60%;
+    --chart-4: 262 50% 60%;
+    --chart-5: 160 50% 50%;
+    --chart-6: 25 80% 55%;
+
+    --chart-grid: 220 15% 20%;
+    --chart-axis: 220 10% 35%;
+    --chart-label: 220 10% 50%;
+    --chart-surface: 220 18% 10%;
+    --chart-tooltip-bg: 220 20% 14%;
+    --chart-tooltip-border: 220 15% 22%;
+
+    --font-display: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 40 10% 92%;
+    --sidebar-primary: 38 92% 55%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 40 10% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 38 92% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Chart animations */
+@keyframes chart-draw-line {
+  from { stroke-dashoffset: var(--line-length, 2000); }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes chart-grow-bar {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes chart-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes chart-pie-reveal {
+  from { stroke-dashoffset: var(--circumference, 628); }
+  to { stroke-dashoffset: var(--dash-offset, 0); }
+}
+
+@keyframes chart-point-pop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-chart-line {
+  animation: chart-draw-line 1.2s ease-out forwards;
+}
+
+.animate-chart-bar {
+  animation: chart-grow-bar 0.6s ease-out forwards;
+  transform-origin: bottom;
+}
+
+.animate-chart-fade {
+  animation: chart-fade-in 0.5s ease-out forwards;
+}
+
+.animate-chart-point {
+  animation: chart-point-pop 0.4s ease-out forwards;
+}
